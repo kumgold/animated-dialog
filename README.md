@@ -1,2 +1,2 @@
 # bubble-dialog
-Compose Dialog Library (제작중)
+Compose Dialog Open Source Library (제작중)
