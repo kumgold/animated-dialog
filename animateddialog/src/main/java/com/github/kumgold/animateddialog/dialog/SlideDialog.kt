@@ -1,10 +1,5 @@
-package com.github.kumgold.animateddialog.ui.dialog
+package com.github.kumgold.animateddialog.dialog
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -31,9 +26,10 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.github.kumgold.animateddialog.anim.SlideAnimatedVisibility
 
 @Composable
-fun ScaleDialog(
+fun SlideDialog(
     dialogState: MutableState<Boolean>,
     durationMilli: Int = 300,
     backgroundColor: Color = Color.Black.copy(alpha = 0.8f),
@@ -60,20 +56,9 @@ fun ScaleDialog(
         )
     }
 
-    AnimatedVisibility(
+    com.github.kumgold.animateddialog.anim.SlideAnimatedVisibility(
         visible = dialogState.value,
-        enter = scaleIn(
-            animationSpec = tween(
-                durationMillis = durationMilli,
-                easing = LinearEasing
-            )
-        ),
-        exit = scaleOut(
-            animationSpec = tween(
-                durationMillis = durationMilli,
-                easing = LinearEasing
-            )
-        )
+        durationMilli = durationMilli
     ) {
         Box(
             modifier = Modifier.fillMaxSize(),

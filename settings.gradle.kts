@@ -16,9 +16,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://jitpack.io")
     }
 }
 
-rootProject.name = "BubbleDialog"
-include(":app")
- 
+rootProject.name = "AnimatedDialog"
+include(":animateddialog")
