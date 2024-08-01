@@ -1,7 +1,11 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    `maven-publish`
 }
+
+group = "com.github.kumgold"
+version = "1.0.5"
 
 android {
     namespace = "com.github.kumgold.animateddialog"
@@ -63,4 +67,18 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            register<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.kumgold"
+                artifactId = "animated-dialog"
+                version = "1.0.5"
+            }
+        }
+    }
 }
